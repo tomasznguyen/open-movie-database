@@ -1,0 +1,19 @@
+.closeButton {
+  color: darkgrey;
+  cursor: pointer;
+  font-weight: bold;
+  position: absolute;
+  right: 16px;
+  text-transform: uppercase;
+  top: 8px;
+  transition: color 300ms ease-in-out;
+  user-select: none;
+}
+
+.closeButton:hover {
+  color: black;
+}
+
+.details {
+  position: relative;
+}
