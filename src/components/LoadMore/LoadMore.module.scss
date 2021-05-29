@@ -18,6 +18,7 @@
     height: 56px;
     margin-left: auto;
     margin-right: auto;
+    outline: none;
     padding-left: 13px;
     width: 195px;
 
@@ -29,7 +30,7 @@
       width: 28px;
     }
 
-    .active .icon {
+    &.active .icon {
       animation: spin 1s linear infinite;
     }
 

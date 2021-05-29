@@ -11,9 +11,10 @@ import { MovieShort } from "../types/omd";
  * @returns Fetch status; a list of movies and the total number of movies if the fetch succeeded;
  *          an error message if the fetch failed
  */
-export const useSearchMovies = (keyword: string, page: number = 1) => {
+export const useSearchMovies = (keyword: string) => {
   const [error, setError] = React.useState("");
   const [movies, setMovies] = React.useState<MovieShort[]>([]);
+  const [page, setPage] = React.useState(1);
   const [status, setStatus] = React.useState(FetchStatus.Idle);
   const [totalMovies, setTotalMovies] = React.useState(0);
 
@@ -25,7 +26,7 @@ export const useSearchMovies = (keyword: string, page: number = 1) => {
     searchMovies(keyword, page)
       .then((res) => {
         if (active) {
-          setMovies(res.data);
+          setMovies((movies) => [...movies, ...res.data]);
           setTotalMovies(res.totalResults);
           setStatus(FetchStatus.Fetched);
         }
@@ -42,5 +43,15 @@ export const useSearchMovies = (keyword: string, page: number = 1) => {
     };
   }, [keyword, page]);
 
-  return { error, movies, status, totalMovies };
+  const loadNextPage = React.useCallback(() => {
+    setPage((page) => page + 1);
+  }, []);
+
+  const reset = React.useCallback(() => {
+    setMovies([]);
+    setPage(1);
+    setTotalMovies(0);
+  }, []);
+
+  return { error, loadNextPage, movies, reset, status, totalMovies };
 };

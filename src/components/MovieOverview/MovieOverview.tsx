@@ -10,12 +10,17 @@ import MovieList from "../MovieList";
 import styles from "./MovieOverview.module.scss";
 
 const MovieOverview: React.FC = () => {
-  const { error, movies, status, totalMovies } = useSearchMovies("superhero");
+  const { error, loadNextPage, movies, status, totalMovies } =
+    useSearchMovies("superhero");
   const [selectedMovie, setSelectedMovie] =
     React.useState<MovieShort | null>(null);
 
   const handleClose = () => {
     setSelectedMovie(null);
+  };
+
+  const handleLoadMore = () => {
+    loadNextPage();
   };
 
   const handleSelect = (movie: MovieShort) => {
@@ -30,7 +35,10 @@ const MovieOverview: React.FC = () => {
         <>
           <MovieList movies={movies} onSelect={handleSelect} />
           {movies.length < totalMovies && (
-            <LoadMore loading={status === FetchStatus.Fetching} />
+            <LoadMore
+              loading={status === FetchStatus.Fetching}
+              onClick={handleLoadMore}
+            />
           )}
         </>
       )}

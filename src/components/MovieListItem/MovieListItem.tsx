@@ -15,8 +15,15 @@ const MovieListItem: React.FC<MovieListItemProps> = ({ movie, onSelect }) => {
 
   return (
     <article className={styles.listItem} onClick={handleClick}>
-      {/* <img src={poster} srcSet={`${poster2x} 2x`} alt={movie.Title} /> */}
-      <img src={movie.Poster} srcSet={`${movie.Poster} 2x`} alt={movie.Title} />
+      {movie.Poster === "N/A" ? (
+        <img src={poster} srcSet={`${poster2x} 2x`} alt={movie.Title} />
+      ) : (
+        <img
+          src={movie.Poster}
+          srcSet={`${movie.Poster} 2x`}
+          alt={movie.Title}
+        />
+      )}
       <section className={styles.meta}>
         <h2 className={styles.title}>{movie.Title}</h2>
         <p className={styles.genre}>{movie.Year}</p>
