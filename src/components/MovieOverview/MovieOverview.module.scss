@@ -1,0 +1,13 @@
+@import "../../breakpoints.scss";
+
+.overview {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @include desktop {
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 1200px;
+  }
+}

@@ -9,11 +9,11 @@ export interface MovieListProps {
 
 const MovieList: React.FC<MovieListProps> = ({ movies, onSelect }) => {
   return (
-    <ul className={styles.list}>
+    <section className={styles.list}>
       {movies.map((movie) => (
         <MovieListItem key={movie.imdbID} movie={movie} onSelect={onSelect} />
       ))}
-    </ul>
+    </section>
   );
 };
 

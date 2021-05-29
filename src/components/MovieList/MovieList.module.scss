@@ -1,5 +1,12 @@
+@import "../../breakpoints.scss";
+
 .list {
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  list-style-type: none;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+
+  @include desktop {
+    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

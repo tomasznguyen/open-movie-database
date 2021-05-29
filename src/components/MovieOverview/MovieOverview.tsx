@@ -4,12 +4,13 @@ import { FetchStatus } from "../../types";
 import { MovieShort } from "../../types/omd";
 import ErrorMessage from "../ErrorMessage";
 import Loader from "../Loader";
+import LoadMore from "../LoadMore";
 import MovieDetails from "../MovieDetails";
 import MovieList from "../MovieList";
 import styles from "./MovieOverview.module.scss";
 
 const MovieOverview: React.FC = () => {
-  const { error, movies, status } = useSearchMovies("superhero");
+  const { error, movies, status, totalMovies } = useSearchMovies("superhero");
   const [selectedMovie, setSelectedMovie] =
     React.useState<MovieShort | null>(null);
 
@@ -26,7 +27,12 @@ const MovieOverview: React.FC = () => {
       {status === FetchStatus.Error && <ErrorMessage message={error} />}
       {status === FetchStatus.Fetching && <Loader />}
       {!selectedMovie && movies.length > 0 && (
-        <MovieList movies={movies} onSelect={handleSelect} />
+        <>
+          <MovieList movies={movies} onSelect={handleSelect} />
+          {movies.length < totalMovies && (
+            <LoadMore loading={status === FetchStatus.Fetching} />
+          )}
+        </>
       )}
       {selectedMovie && (
         <MovieDetails movieId={selectedMovie.imdbID} onClose={handleClose} />

@@ -1,9 +1,82 @@
-.header {
-  padding: 16px 0;
+@import "../../breakpoints.scss";
 
-  h1 {
-    font-size: 2rem;
-    font-variant: small-caps;
-    font-weight: normal;
+.header {
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: auto 800px;
+  height: 800px;
+  margin-bottom: -192px;
+
+  @include desktop {
+    margin-bottom: -82px;
+  }
+
+  .headerInner {
+    padding: 30px 30px 0;
+
+    @include desktop {
+      margin: 0 auto;
+      padding-top: 45px 15px 0;
+      width: 1200px;
+    }
+
+    h1 {
+      font-family: GalanoGrotesque-ExtraBold, sans-serif;
+      font-size: 3.75rem;
+      color: #ffffff;
+      letter-spacing: 0;
+      line-height: 1;
+      margin-top: 79.2px;
+
+      @include desktop {
+        font-size: 5.625rem;
+        line-height: 1.233333;
+        margin-top: 164px;
+      }
+    }
+
+    p {
+      font-family: Newzald-Bold, serif;
+      font-size: 1.125rem;
+      color: #ffffff;
+      letter-spacing: 0;
+      line-height: 1.333333;
+      margin-top: 20px;
+
+      @include desktop {
+        margin-top: 0;
+        width: 570px;
+      }
+    }
+
+    button {
+      align-items: center;
+      background: #ff2345;
+      border: none;
+      border-radius: 28px;
+      cursor: pointer;
+      display: flex;
+      height: 56px;
+      justify-content: space-between;
+      margin-top: 21px;
+      padding-left: 30px;
+      padding-right: 30px;
+      width: 259px;
+    }
+
+    button .text {
+      font-family: GalanoGrotesque-Bold, sans-serif;
+      font-size: 1rem;
+      color: #ffffff;
+      letter-spacing: 0;
+      line-height: 1.25;
+    }
+
+    button .icon {
+      background-image: url(../../assets/logo-imdb.svg);
+      background-repeat: no-repeat;
+      height: 20px;
+      width: 42px;
+    }
   }
 }
