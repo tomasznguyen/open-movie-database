@@ -34,3 +34,17 @@ export type MovieShort = {
 };
 
 export type Rating = { Source: string; Value: string };
+
+export type FetchResponse =
+  | ({
+      Response: "True";
+    } & MovieLong)
+  | { Response: "False"; Error: string };
+
+export type SearchResponse =
+  | {
+      Response: "True";
+      Search: MovieShort[];
+      totalResults: string;
+    }
+  | { Response: "False"; Error: string };

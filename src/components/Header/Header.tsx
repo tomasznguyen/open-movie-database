@@ -29,7 +29,7 @@ const Header: React.FC = () => (
       </p>
       <button>
         <span className={styles.text}>More information</span>
-        <span className={styles.text}></span>
+        <span className={styles.icon}></span>
       </button>
     </div>
   </header>
